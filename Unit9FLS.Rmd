@@ -52,6 +52,10 @@ plot_usmap(data = StateBeerC, values = "values", regions = "state") + scale_fill
 Breweries$Brewery_id = Breweries$Brew_ID
 Breweries <- Breweries %>% select(Brewery_id, Name, City, State)
 BB <- merge(Beers,Breweries, by = "Brewery_id", all = TRUE)
+BB <- BB %>%
+rename(Beer_Name = Name.x)
+BB <- BB %>%
+rename(Brewery_Name = Name.y)
 dim(BB)
 summary(BB)
 head(BB)
